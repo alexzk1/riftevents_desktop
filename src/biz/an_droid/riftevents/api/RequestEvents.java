@@ -7,8 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by alex (alexzkhr@gmail.com) on 11/10/17.
@@ -43,21 +42,33 @@ public class RequestEvents
         }
     };
 
-    private static Map<String, Integer> zones = new HashMap<String, Integer>()
-    {
-        {
-            put("Mathosia", 1);
-            put("Brevane/Dusken", 2);
-            put("Plane of Water", 3);
-            put("Celestial Lands", 4);
-        }
-    };
-    private final EventWraper failed = new EventWraper();
-    private final Gson gson = new Gson();
+//    private static Map<String, Integer> zones = new HashMap<String, Integer>()
+//    {
+//        {
+//            put("Mathosia", 1);
+//            put("Brevane/Dusken", 2);
+//            put("Plane of Water", 3);
+//            put("Celestial Lands", 4);
+//        }
+//    };
 
-    public EventWraper fetch(final String server)
+    private static String[] euServers;
+    private static String[] usServers;
+
+    static
     {
-        EventWraper res = failed;
+        euServers = shardsEU.keySet().toArray(new String[shardsEU.size()]);
+        usServers = shardsUS.keySet().toArray(new String[shardsUS.size()]);
+        Arrays.sort(euServers);
+        Arrays.sort(usServers);
+    }
+
+    private final static EventWrapper failed = new EventWrapper();
+    private final static Gson gson = new Gson();
+
+    public static EventWrapper fetch(final String server)
+    {
+        EventWrapper res = failed;
         String urls = null;
         if (shardsEU.containsKey(server))
         {
@@ -75,8 +86,7 @@ public class RequestEvents
             try
             {
                 String jsr = getBody(urls);
-                System.out.println(jsr);
-                res = gson.fromJson(jsr, EventWraper.class);
+                res = gson.fromJson(jsr, EventWrapper.class);
             } catch (IOException e)
             {
                 e.printStackTrace();
@@ -86,7 +96,39 @@ public class RequestEvents
         return res;
     }
 
-    private String getBody(String url) throws IOException
+    public static Set<ServerEvent> fetchFiltered(final String server, final IZoneFilter filter)
+    {
+        return filter.filter(fetch(server));
+    }
+
+    public static Map<String, Set<ServerEvent>> fetchFiltered(final List<String> servers, final IZoneFilter filter)
+    {
+        Map<String, Set<ServerEvent>> res = new HashMap<>(10);
+        for (String s : servers)
+        {
+            Set<ServerEvent> r = fetchFiltered(s, filter);
+            if (!r.isEmpty())
+                res.put(s, r);
+        }
+        return res;
+    }
+
+    public static boolean isEuServer(final  String server)
+    {
+        return shardsEU.containsKey(server);
+    }
+
+    public static String[] getEuServers()
+    {
+        return euServers;
+    }
+
+    public static String[] getUsServers()
+    {
+        return usServers;
+    }
+
+    public static String getBody(String url) throws IOException
     {
         URLConnection con = new URL(url).openConnection();
         InputStream in = con.getInputStream();

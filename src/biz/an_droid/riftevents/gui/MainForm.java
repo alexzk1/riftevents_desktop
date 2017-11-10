@@ -1,4 +1,5 @@
 package biz.an_droid.riftevents.gui;
 
-public class Controller {
+public class MainForm
+{
 }

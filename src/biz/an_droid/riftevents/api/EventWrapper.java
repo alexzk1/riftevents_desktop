@@ -5,8 +5,9 @@ import java.util.ArrayList;
 /**
  * Created by alex (alexzkhr@gmail.com) on 11/10/17.
  * At 04:37
+ * Corresponds to rift api response json, do not rename fields!
  */
-public class EventWraper
+public class EventWrapper
 {
     private String        status = "failed";
     private ArrayList<ServerEvent> data;
@@ -35,4 +36,5 @@ public class EventWraper
     {
         return "success".equals(getStatus());
     }
+    
 }

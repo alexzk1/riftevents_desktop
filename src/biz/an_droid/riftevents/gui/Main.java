@@ -1,16 +1,24 @@
 package biz.an_droid.riftevents.gui;
 
-import biz.an_droid.riftevents.api.EventWraper;
-import biz.an_droid.riftevents.api.RequestEvents;
+import biz.an_droid.riftevents.api.*;
 import javafx.application.*;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 
 // Java 8 code
 public class Main extends Application {
@@ -21,62 +29,43 @@ public class Main extends Application {
 
     // application stage is stored so that it can be shown and hidden based on system tray icon operations.
     private Stage stage;
-    
+
+    public final static EventsReader reader = new EventsReader(new VostigarActivesFilter());
+
     // sets up the javafx application.
     // a tray icon is setup for the icon, but the main stage remains invisible until the user
     // interacts with the tray icon.
-    @Override public void start(final Stage stage) {
+    @Override public void start(final Stage stage)
+    {
         // stores a reference to the stage.
         this.stage = stage;
+        stage.setTitle("RIFT Events Tracker");
+        stage.resizableProperty().setValue(Boolean.FALSE);
 
+        stage.getIcons().add(SwingFXUtils.toFXImage(ImageLoader.loadICOFromUrlForTray(iconImageLoc), null));
         // instructs the javafx system not to exit implicitly when the last application window is shut.
         Platform.setImplicitExit(false);
 
         // sets up the tray icon (using awt code run on the swing thread).
         javax.swing.SwingUtilities.invokeLater(this::addAppToTray);
 
-        // out stage will be translucent, so give it a transparent style.
-        stage.initStyle(StageStyle.TRANSPARENT);
+        try
+        {
+            Scene scene = new Scene(buildSimpleSceneFromCode(), 300, 600);
+            stage.setScene(scene);
 
-        // create the layout for the javafx stage.
-        StackPane layout = new StackPane(createContent());
-        layout.setStyle(
-                "-fx-background-color: rgba(255, 255, 255, 0.5);"
-        );
-        layout.setPrefSize(300, 200);
-
-        // this dummy app just hides itself when the app screen is clicked.
-        // a real app might have some interactive UI and a separate icon which hides the app window.
-        layout.setOnMouseClicked(event -> stage.hide());
-
-        // a scene with a transparent fill is necessary to implement the translucent app window.
-        Scene scene = new Scene(layout);
-        scene.setFill(Color.TRANSPARENT);
-
-        stage.setScene(scene);
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+            this.exit();
+        }
     }
 
-    /**
-     * For this dummy app, the (JavaFX scenegraph) content, just says "hello, world".
-     * A real app, might load an FXML or something like that.
-     *
-     * @return the main window application content.
-     */
-    private Node createContent() {
-        Label hello = new Label("hello, world");
-        hello.setStyle("-fx-font-size: 40px; -fx-text-fill: forestgreen;");
-        Label instructions = new Label("(click to hide)");
-        instructions.setStyle("-fx-font-size: 12px; -fx-text-fill: orange;");
-
-        VBox content = new VBox(10, hello, instructions);
-        content.setAlignment(Pos.CENTER);
-
-        return content;
-    }
 
     /**
      * Sets up a system tray icon for the application.
      */
+    private java.awt.TrayIcon trayIcon = null;
     private void addAppToTray() {
         try {
             // ensure awt toolkit is initialized.
@@ -90,7 +79,7 @@ public class Main extends Application {
 
             // set up a system tray icon.
             java.awt.SystemTray tray = java.awt.SystemTray.getSystemTray();
-            java.awt.TrayIcon trayIcon = new java.awt.TrayIcon(ImageLoader.loadICOFromUrlForTray(iconImageLoc));
+            trayIcon = new java.awt.TrayIcon(ImageLoader.loadICOFromUrlForTray(iconImageLoc));
             trayIcon.setToolTip("RIFT desktop event tracker.");
 
             // if the user selects the default menu item (which includes the app name),
@@ -116,10 +105,7 @@ public class Main extends Application {
             // and select the exit option, this will shutdown JavaFX and remove the
             // tray icon (removing the tray icon will also shut down AWT).
             java.awt.MenuItem exitItem = new java.awt.MenuItem("Exit");
-            exitItem.addActionListener(event -> {
-                tray.remove(trayIcon);
-                Platform.exit();
-            });
+            exitItem.addActionListener(event -> this.exit());
 
             // setup the popup menu for the application.
             final java.awt.PopupMenu popup = new java.awt.PopupMenu();
@@ -147,16 +133,85 @@ public class Main extends Application {
         }
     }
 
-    public static void main(String[] args) throws IOException, java.awt.AWTException {
-        // Just launches the JavaFX application.
-        // Due to way the application is coded, the application will remain running
-        // until the user selects the Exit menu option from the tray icon.
-        RequestEvents r = new RequestEvents();
-        EventWraper e = r.fetch("Gelidra");
-        e.isSuccess();
-        
+    public static void main(String[] args) throws Exception
+    {
         launch(args);
+        reader.close();
+    }
 
+    private void exit()
+    {
+        java.awt.SystemTray tray = java.awt.SystemTray.getSystemTray();
+        if (tray!= null && trayIcon != null)
+            tray.remove(trayIcon);
 
+        Platform.exit();
+    }
+
+    private static void serverSelected(final boolean newValue, final String sn, final ArrayList<String> selected)
+    {
+        if (newValue)
+            selected.add(sn);
+        else
+            selected.remove(sn);
+        reader.setServers((ArrayList<String>)selected.clone());
+    }
+
+    private Parent buildSimpleSceneFromCode() throws IOException
+    {
+        // FIXME: 11/10/17 :make nice gui later
+        //FXMLLoader.load(ResourceLoader.getResource("mainform.fxml"));
+        GridPane grid = new GridPane();
+        final ArrayList<String> selected = new ArrayList<>(20);
+
+        int row = 0;
+        grid.setAlignment(Pos.TOP_CENTER);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(25, 25, 25, 25));
+
+        Text scenetitle = new Text("Vostigar Events Only");
+        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        grid.add(scenetitle, 0, row++, 2, 1);
+
+        grid.add(new Label("EU Servers"), 0, row);
+        grid.add(new Label("US Servers"), 1, row++);
+
+        for (int i = 0, sz = RequestEvents.getEuServers().length; i < sz; ++i)
+        {
+            final String sn = RequestEvents.getEuServers()[i];
+            CheckBox c = new CheckBox(sn);
+            c.selectedProperty().addListener((observable, oldValue, newValue) -> serverSelected(newValue, sn, selected));
+            grid.add(c, 0, i + row);
+        }
+
+        for (int i = 0, sz = RequestEvents.getUsServers().length; i < sz; ++i)
+        {
+            final String sn = RequestEvents.getUsServers()[i];
+            CheckBox c = new CheckBox(sn);
+            c.selectedProperty().addListener((observable, oldValue, newValue) -> serverSelected(newValue, sn, selected));
+            grid.add(c, 1, i + row);
+        }
+
+        row += Math.max(RequestEvents.getEuServers().length, RequestEvents.getUsServers().length);
+
+        grid.add(new Label("Period (s):"), 0, ++row);
+
+        Spinner<Integer> spinner = new Spinner<Integer>(new SpinnerValueFactory.IntegerSpinnerValueFactory(15, 60, 30));
+        spinner.valueProperty().addListener((observable, oldValue, newValue) -> reader.setPeriodSeconds(newValue));
+
+        grid.add(spinner, 1, row++);
+
+        reader.addListener(events -> {
+             for (String server : events.keySet())
+             {
+                 for (ServerEvent e : events.get(server))
+                 {
+                     System.out.println(server+": " + e.getElapsed(RequestEvents.isEuServer(server))+", " + e.getName());
+                 }
+             }
+        });
+
+        return grid;
     }
 }

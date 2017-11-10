@@ -13,7 +13,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 ;
 
@@ -24,8 +26,8 @@ import java.util.List;
  */
 public class ImageLoader
 {
-    static final List<BufferedImage> def = new ArrayList<>(1);
-    public static BufferedImage finalImage;
+    static  final List<BufferedImage> def = new ArrayList<>(1);
+    private final static Map<String, BufferedImage> finalImage = new HashMap<>(5);
     
     static
     {
@@ -38,8 +40,11 @@ public class ImageLoader
         }
     }
 
-    public static Image loadICOFromUrlForTray(String url)
+    public static BufferedImage loadICOFromUrlForTray(String url)
     {
+       if (finalImage.containsKey(url) && finalImage.get(url) != null)
+           return finalImage.get(url);
+
         List<BufferedImage> images = null;
 
         try {
@@ -59,7 +64,7 @@ public class ImageLoader
             if (src.getHeight() < images.get(i).getHeight())
                 src = images.get(i);
 
-        finalImage = src;
+        finalImage.put(url, src);
 //        if (PlatformUtil.isLinux())
 //        {
 //            BufferedImage copy = new BufferedImage(src.getWidth(), src.getHeight(), BufferedImage.TYPE_INT_RGB);
