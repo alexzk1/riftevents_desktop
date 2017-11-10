@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="org.jclarion:image4j:0.7" type="repository">
+    <properties maven-id="org.jclarion:image4j:0.7" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jclarion/image4j/0.7/image4j-0.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/image4j-0.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
