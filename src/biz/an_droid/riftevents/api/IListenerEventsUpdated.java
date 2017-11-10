@@ -9,5 +9,5 @@ import java.util.Set;
  */
 public interface IListenerEventsUpdated
 {
-    void haveNewEvents(Map<String, Set<ServerEvent>> events);
+    void haveNewEvents(Map<String, Set<ServerEvent>> events, boolean had_new_events);
 }

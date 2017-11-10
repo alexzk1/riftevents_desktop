@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ListenersSupport.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/AnyActiveEvent.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/BaseSingleZoneFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventsReader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/IListenerEventsUpdated.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/IZoneFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/VostigarActivesFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/resources/mainform.fxml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/riftevents_desktop/biz/an_droid/riftevents/gui/sample.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/sample.fxml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventWraper.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventWrapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Controller.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/MainForm.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/riftevents_desktop_jar.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/JavaFXApp.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventsReader.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventsReaderThreaded.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/riftevents_desktop.iml" afterPath="$PROJECT_DIR$/riftevents_desktop.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/RequestEvents.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/RequestEvents.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/ServerEvent.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/ServerEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/IListenerEventsUpdated.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/IListenerEventsUpdated.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -86,8 +74,8 @@
       <file leaf-file-name="ImageLoader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="66" column="32" lean-forward="false" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+            <state relative-caret-position="684">
+              <caret line="77" column="9" lean-forward="false" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,11 +86,19 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="181" column="60" lean-forward="true" selection-start-line="181" selection-start-column="60" selection-end-line="181" selection-end-column="60" />
+            <state relative-caret-position="-36">
+              <caret line="278" column="132" lean-forward="true" selection-start-line="278" selection-start-column="132" selection-end-line="278" selection-end-column="132" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7449#7458#0" expanded="true" />
+                <element signature="e#7129#7130#0" expanded="true" />
+                <element signature="e#7172#7173#0" expanded="true" />
+                <element signature="e#7230#7231#0" expanded="true" />
+                <element signature="e#7274#7275#0" expanded="true" />
+                <element signature="e#7318#7319#0" expanded="true" />
+                <element signature="e#7363#7364#0" expanded="true" />
+                <element signature="e#7420#7421#0" expanded="true" />
+                <element signature="e#7466#7467#0" expanded="true" />
+                <element signature="e#8088#8097#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,8 +117,8 @@
       <file leaf-file-name="IListenerEventsUpdated.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/api/IListenerEventsUpdated.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+            <state relative-caret-position="165">
+              <caret line="11" column="59" lean-forward="false" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,19 +126,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventsReader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventsReader.java">
+      <file leaf-file-name="EventsReaderThreaded.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventsReaderThreaded.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1266">
-              <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+            <state relative-caret-position="405">
+              <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#788#789#0" expanded="true" />
-                <element signature="e#813#814#0" expanded="true" />
-                <element signature="e#3516#3517#0" expanded="true" />
-                <element signature="e#3550#3551#0" expanded="true" />
-                <element signature="e#3602#3603#0" expanded="true" />
-                <element signature="e#3643#3644#0" expanded="true" />
+                <element signature="e#804#805#0" expanded="true" />
+                <element signature="e#829#830#0" expanded="true" />
+                <element signature="e#884#885#0" expanded="true" />
+                <element signature="e#914#915#0" expanded="true" />
+                <element signature="e#4154#4155#0" expanded="true" />
+                <element signature="e#4188#4189#0" expanded="true" />
+                <element signature="e#4240#4241#0" expanded="true" />
+                <element signature="e#4281#4282#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,7 +150,7 @@
         <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/api/ServerEvent.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
-              <caret line="68" column="67" lean-forward="true" selection-start-line="68" selection-start-column="67" selection-end-line="68" selection-end-column="67" />
+              <caret line="68" column="35" lean-forward="false" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2010#2011#0" expanded="true" />
@@ -200,7 +198,6 @@
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventWraper.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/resources/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/resources/main.fxml" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/IZoneFilter.java" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/BaseFilter.java" />
@@ -209,12 +206,14 @@
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/VostigarActivesFilter.java" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventWrapper.java" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/IEventsUpdated.java" />
-        <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/IListenerEventsUpdated.java" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/resources/mainform.fxml" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/RequestEvents.java" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/AnyActiveEvent.java" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventsReader.java" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/ServerEvent.java" />
+        <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/IListenerEventsUpdated.java" />
+        <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java" />
+        <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventsReaderThreaded.java" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java" />
       </list>
     </option>
@@ -308,6 +307,19 @@
             </path>
             <path>
               <item name="riftevents_desktop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="riftevents_desktop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tray" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="riftevents_desktop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="riftevents_desktop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="tray" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="riftevents_desktop" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
             <path>
@@ -347,7 +359,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2530242" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
@@ -391,7 +403,9 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="riftevents_desktop" />
-      <envs />
+      <envs>
+        <env name="GDK_CORE_DEVICE_EVENTS" value="1" />
+      </envs>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
     </configuration>
@@ -501,12 +515,12 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-      <workItem from="1510256392871" duration="34519000" />
+      <workItem from="1510256392871" duration="42028000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35821000" />
+    <option name="totallyTimeSpent" value="43330000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1048" extended-state="6" />
@@ -535,7 +549,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IntelliGuard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16577825" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15778251" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Android WiFi ADB" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -578,7 +592,15 @@
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7449#7458#0" expanded="true" />
+            <element signature="e#7129#7130#0" expanded="true" />
+            <element signature="e#7172#7173#0" expanded="true" />
+            <element signature="e#7230#7231#0" expanded="true" />
+            <element signature="e#7274#7275#0" expanded="true" />
+            <element signature="e#7318#7319#0" expanded="true" />
+            <element signature="e#7363#7364#0" expanded="true" />
+            <element signature="e#7420#7421#0" expanded="true" />
+            <element signature="e#7466#7467#0" expanded="true" />
+            <element signature="e#8088#8097#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -732,8 +754,8 @@
         <state relative-caret-position="144">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#473#486#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#473#486#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -786,16 +808,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="66" column="32" lean-forward="false" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/default/javafx-src.zip!/javafx/beans/InvalidationListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
@@ -817,7 +829,7 @@
         <state relative-caret-position="135">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -827,7 +839,7 @@
         <state relative-caret-position="360">
           <caret line="24" column="22" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="24" selection-end-column="19" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -837,16 +849,6 @@
         <state relative-caret-position="345">
           <caret line="38" column="4" lean-forward="false" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/api/IListenerEventsUpdated.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -869,34 +871,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventsReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1266">
-          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#788#789#0" expanded="true" />
-            <element signature="e#813#814#0" expanded="true" />
-            <element signature="e#3516#3517#0" expanded="true" />
-            <element signature="e#3550#3551#0" expanded="true" />
-            <element signature="e#3602#3603#0" expanded="true" />
-            <element signature="e#3643#3644#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/api/ServerEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="68" column="67" lean-forward="true" selection-start-line="68" selection-start-column="67" selection-end-line="68" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2010#2011#0" expanded="true" />
-            <element signature="e#2090#2091#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/api/RequestEvents.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -909,13 +883,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/api/IListenerEventsUpdated.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="181" column="60" lean-forward="true" selection-start-line="181" selection-start-column="60" selection-end-line="181" selection-end-column="60" />
+        <state relative-caret-position="165">
+          <caret line="11" column="59" lean-forward="false" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7449#7458#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/api/ServerEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="68" column="35" lean-forward="false" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2010#2011#0" expanded="true" />
+            <element signature="e#2090#2091#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tray/notification/TrayNotification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2730">
+          <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="77" column="9" lean-forward="false" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventsReaderThreaded.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#804#805#0" expanded="true" />
+            <element signature="e#829#830#0" expanded="true" />
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
+            <element signature="e#4154#4155#0" expanded="true" />
+            <element signature="e#4188#4189#0" expanded="true" />
+            <element signature="e#4240#4241#0" expanded="true" />
+            <element signature="e#4281#4282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tray/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="278" column="132" lean-forward="true" selection-start-line="278" selection-start-column="132" selection-end-line="278" selection-end-column="132" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7129#7130#0" expanded="true" />
+            <element signature="e#7172#7173#0" expanded="true" />
+            <element signature="e#7230#7231#0" expanded="true" />
+            <element signature="e#7274#7275#0" expanded="true" />
+            <element signature="e#7318#7319#0" expanded="true" />
+            <element signature="e#7363#7364#0" expanded="true" />
+            <element signature="e#7420#7421#0" expanded="true" />
+            <element signature="e#7466#7467#0" expanded="true" />
+            <element signature="e#8088#8097#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -926,7 +977,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>JavaFXApp</last-edited>
+          <last-edited>riftevents_desktop:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
