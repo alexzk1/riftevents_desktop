@@ -66,7 +66,7 @@ public class FadeAnimation implements TrayAnimation {
 
         //Lowers the opacity to 0.0 within 2000 milliseconds
         KeyValue kv1 = new KeyValue(stage.opacityProperty(), 0.0);
-        KeyFrame kf1 = new KeyFrame(Duration.millis(2000), kv1);
+        KeyFrame kf1 = new KeyFrame(Duration.millis(500), kv1);
 
         tl.getKeyFrames().addAll(kf1);
 

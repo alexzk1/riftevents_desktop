@@ -2,9 +2,8 @@ package biz.an_droid.riftevents.gui;
 
 
 import biz.an_droid.riftevents.ResourceLoader;
-import com.sun.javafx.PlatformUtil;
 import net.sf.image4j.codec.ico.ICODecoder;
-import net.sf.image4j.codec.ico.ICOImage;
+
 
 import javax.imageio.ImageIO;
 import java.io.InputStream;
@@ -28,7 +27,7 @@ public class ImageLoader
 {
     static  final List<BufferedImage> def = new ArrayList<>(1);
     private final static Map<String, BufferedImage> finalImage = new HashMap<>(5);
-    
+
     static
     {
         try
@@ -42,39 +41,65 @@ public class ImageLoader
 
     public static BufferedImage loadICOFromUrlForTray(String url)
     {
-       if (finalImage.containsKey(url) && finalImage.get(url) != null)
-           return finalImage.get(url);
+        return loadICOFromUrlForTray(url, false);
+    }
 
-        List<BufferedImage> images = null;
+    public static BufferedImage loadICOFromUrlForTray(String url, boolean remove_transparency)
+    {
+        final String tkey = "WHITE_"+url;
+        BufferedImage src = null;
 
-        try {
-            InputStream istr = new URL(url).openConnection().getInputStream();
-            images = ICODecoder.read(istr);
-        } catch (IOException ex)
+        if (remove_transparency)
         {
-           ex.printStackTrace();
+            if (finalImage.containsKey(tkey) && finalImage.get(tkey) != null)
+                return finalImage.get(tkey);
+
+            if (finalImage.containsKey(url) && finalImage.get(url) != null)
+                src = finalImage.get(url);
         }
-        if (images == null)
-            images = def;
+        else
+        {
+            if (finalImage.containsKey(url) && finalImage.get(url) != null)
+                return finalImage.get(url);
+        }
 
-        BufferedImage src = images.get(0);
+        if (src == null)
+        {
+            List<BufferedImage> images = null;
 
-        //finding best icon if ICO file has many
-        for (int i = images.size() - 1; i > 0; --i)
-            if (src.getHeight() < images.get(i).getHeight())
-                src = images.get(i);
+            try
+            {
+                InputStream istr = new URL(url).openConnection().getInputStream();
+                images = ICODecoder.read(istr);
+            } catch (IOException ex)
+            {
+                ex.printStackTrace();
+            }
+            if (images == null)
+                images = def;
 
-        finalImage.put(url, src);
-//        if (PlatformUtil.isLinux())
-//        {
-//            BufferedImage copy = new BufferedImage(src.getWidth(), src.getHeight(), BufferedImage.TYPE_INT_RGB);
-//            Graphics2D g2d = copy.createGraphics();
-//            g2d.setColor(Color.WHITE); // Or what ever fill color you want...
-//            g2d.fillRect(0, 0, copy.getWidth(), copy.getHeight());
-//            g2d.drawImage(src, 0, 0, null);
-//            g2d.dispose();
-//            return copy;
-//        }
+            src = images.get(0);
+
+            //finding best icon if ICO file has many
+            for (int i = images.size() - 1; i > 0; --i)
+                if (src.getHeight() < images.get(i).getHeight())
+                    src = images.get(i);
+
+            finalImage.put(url, src);
+        }
+        
+        if (remove_transparency)
+        {
+            BufferedImage copy = new BufferedImage(src.getWidth(), src.getHeight(), BufferedImage.TYPE_INT_RGB);
+            Graphics2D g2d = copy.createGraphics();
+            g2d.setColor(Color.WHITE); // Or what ever fill color you want...
+            g2d.fillRect(0, 0, copy.getWidth(), copy.getHeight());
+            g2d.drawImage(src, 0, 0, null);
+            g2d.dispose();
+            finalImage.put(tkey, copy);
+            return copy;
+        }
+        
         return src;
     }
 
