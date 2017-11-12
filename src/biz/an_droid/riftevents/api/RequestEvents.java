@@ -142,4 +142,17 @@ public class RequestEvents
         
         return new String(baos.toByteArray(), encoding);
     }
+
+//    public static void dumpVoiceTexts()
+//    {
+//        for (String s: euServers)
+//            System.out.println("Vostigar event started on " + s);
+//
+//        for (String s: usServers)
+//            System.out.println("Vostigar event started on " + s);
+//    }
+//    static
+//    {
+//        dumpVoiceTexts();
+//    }
 }

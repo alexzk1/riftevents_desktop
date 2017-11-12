@@ -90,6 +90,7 @@ public class ServerEvent
         return Duration.between(base, ZonedDateTime.now(zid)).getSeconds();
     }
 
+
     public String getElapsed(boolean is_eu)
     {
         return String.format("%d minutes",getElapsedSeconds(is_eu) / 60);

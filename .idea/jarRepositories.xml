@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="dbfd751e-4302-47c3-8fb4-d14a2cbc95e1" />
+      <option name="name" value="dbfd751e-4302-47c3-8fb4-d14a2cbc95e1" />
+      <option name="url" value="https://jcenter.bintray.com" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="3caa2f4f-67c3-44d2-ac3f-724b99dbc84a" />
+      <option name="name" value="3caa2f4f-67c3-44d2-ac3f-724b99dbc84a" />
+      <option name="url" value="https://dl.bintray.com/marytts/marytts" />
+    </remote-repository>
+  </component>
+</project>

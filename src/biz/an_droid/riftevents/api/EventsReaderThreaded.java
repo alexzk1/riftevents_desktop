@@ -118,6 +118,11 @@ public class EventsReaderThreaded implements IListenerSupport<IListenerEventsUpd
             thread.start();
     }
 
+    public int getPeriod()
+    {
+        return periodSeconds.get();
+    }
+
     public void setServers(List<String> servs)
     {
         servers.set(servs);

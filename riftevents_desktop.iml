@@ -7,6 +7,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/tray/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/tray/views" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/biz/an_droid/riftevents/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/voice_src" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/voices" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

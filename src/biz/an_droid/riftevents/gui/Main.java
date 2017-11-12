@@ -1,12 +1,11 @@
 package biz.an_droid.riftevents.gui;
 
+import biz.an_droid.riftevents.ResourceLoader;
 import biz.an_droid.riftevents.api.*;
 import com.sun.javafx.PlatformUtil;
 import javafx.application.*;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -16,6 +15,8 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -24,9 +25,12 @@ import javafx.util.Duration;
 import tray.animations.AnimationType;
 import tray.notification.TrayNotification;
 
+import javax.sound.sampled.*;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.prefs.BackingStoreException;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.prefs.Preferences;
 
 
@@ -154,11 +158,16 @@ public class Main extends Application {
         }
     }
 
+
+
     public static void main(String[] args) throws Exception
     {
+
         launch(args);
         reader.close();
+
         prefs.flush();
+        AePlayWave.playList(null);
     }
 
     private void exit()
@@ -183,6 +192,7 @@ public class Main extends Application {
 
     private final static String period_key = "PERIOD";
     private final static String popup_key = "POPUP";
+    private final static String say_key = "SAY";
 
     public static class TableElement
     {
@@ -216,11 +226,12 @@ public class Main extends Application {
         }
     }
 
+
     private Parent buildSimpleSceneFromCode() throws IOException
     {
         // FIXME: 11/10/17 :make nice gui later
         //FXMLLoader.load(ResourceLoader.getResource("mainform.fxml"));
-        
+
         GridPane grid = new GridPane();
         final ArrayList<String> selected = new ArrayList<>(20);
 
@@ -279,6 +290,12 @@ public class Main extends Application {
         cp.setSelected(prefs.getBoolean(popup_key, true));
         cp.selectedProperty().addListener((observable, oldValue, newValue) -> prefs.putBoolean(popup_key, newValue));
 
+        final CheckBox vcpf  = new CheckBox("Say new event by voice.");
+        grid.add(vcpf, 0, row++,2,1);
+
+        vcpf.setSelected(prefs.getBoolean(say_key, true));
+        vcpf.selectedProperty().addListener((observable, oldValue, newValue) -> prefs.putBoolean(say_key, newValue));
+
         final TableView table = new TableView();
         grid.add(table, 0, row, 2, 10);
         row += 10;
@@ -290,12 +307,12 @@ public class Main extends Application {
         colServer.setCellValueFactory(new PropertyValueFactory<TableElement,String>("server"));
         colDuration.setCellValueFactory(new PropertyValueFactory<TableElement,Integer>("duration"));
         table.setColumnResizePolicy(param -> true); //automatic resize
-        
+
         colServer.setSortType(TableColumn.SortType.ASCENDING);
         colDuration.setSortType(TableColumn.SortType.DESCENDING);
         table.getSortOrder().clear();
         table.getSortOrder().addAll(colDuration, colServer);
-        
+
         final TrayNotification tray = new TrayNotification();
         tray.setTitle("New RIFT Event(s)");
         tray.setImage(SwingFXUtils.toFXImage(ImageLoader.loadICOFromUrlForTray(iconImageLoc), null));
@@ -305,25 +322,36 @@ public class Main extends Application {
         reader.addListener((events, new_events) -> {
             final ObservableList<TableElement> data = FXCollections.observableArrayList();
 
+            final Set<String> toSay = new HashSet<>(10);
+            final int period = reader.getPeriod();
+            
             if (events != null && !events.isEmpty())
             {
                 for (String server : events.keySet())
                 {
                     for (ServerEvent e : events.get(server))
                     {
-                        data.add(new TableElement(server, (int)e.getElapsedSeconds(RequestEvents.isEuServer(server))/60));
+                        int seconds = (int)e.getElapsedSeconds(RequestEvents.isEuServer(server))/60;
+                        data.add(new TableElement(server, seconds));
+                        if (seconds <= period)
+                            toSay.add(server);
                     }
                 }
             }
+
             Platform.runLater(()->{
                 table.setItems(data);
-                
+
                 if (new_events && cp.isSelected())
                 {
                     tray.setMessage("Double click icon to see events table.");
                     tray.showAndDismiss(Duration.seconds(3));
                 }
 
+                if (vcpf.isSelected())
+                {
+                    AePlayWave.playList((String[]) toSay.toArray());
+                }
             });
             System.gc();
         });
