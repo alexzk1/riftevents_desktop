@@ -5,6 +5,7 @@ import biz.an_droid.riftevents.ResourceLoader;
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.util.Set;
 
 public class AePlayWave extends Thread
 {
@@ -34,7 +35,7 @@ public class AePlayWave extends Thread
         curPosition = p;
     }
 
-    void playLocked()
+    public void playLocked()
     {
         System.out.println("Playing...");
         start();
@@ -48,7 +49,7 @@ public class AePlayWave extends Thread
     }
 
     private static Thread player = null;
-    public static void playList(final String[] list)
+    public static void playList(final Set<String> list)
     {
          if (player != null)
          {

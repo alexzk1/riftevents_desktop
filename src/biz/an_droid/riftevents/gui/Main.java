@@ -162,7 +162,9 @@ public class Main extends Application {
 
     public static void main(String[] args) throws Exception
     {
-
+//        Set<String> t = new HashSet<>();
+//        t.add("Zaviel");
+//        AePlayWave.playList(t);
         launch(args);
         reader.close();
 
@@ -350,7 +352,7 @@ public class Main extends Application {
 
                 if (vcpf.isSelected())
                 {
-                    AePlayWave.playList((String[]) toSay.toArray());
+                    AePlayWave.playList(toSay);
                 }
             });
             System.gc();

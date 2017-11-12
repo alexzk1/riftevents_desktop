@@ -7,15 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/AePlayWave.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/riftevents_desktop_jar/riftevents_desktop.jar" afterPath="$PROJECT_DIR$/out/artifacts/riftevents_desktop_jar/riftevents_desktop.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/riftevents_desktop_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/riftevents_desktop_jar.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/riftevents_desktop.iml" afterPath="$PROJECT_DIR$/riftevents_desktop.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventsReaderThreaded.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/EventsReaderThreaded.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/RequestEvents.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/RequestEvents.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/ServerEvent.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/api/ServerEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/AePlayWave.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/AePlayWave.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -94,8 +86,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="352" column="52" lean-forward="false" selection-start-line="352" selection-start-column="52" selection-end-line="352" selection-end-column="52" />
+            <state relative-caret-position="234">
+              <caret line="166" column="35" lean-forward="true" selection-start-line="164" selection-start-column="9" selection-end-line="166" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -106,8 +98,8 @@
       <file leaf-file-name="AePlayWave.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/AePlayWave.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="71" column="16" lean-forward="false" selection-start-line="50" selection-start-column="4" selection-end-line="71" selection-end-column="16" />
+            <state relative-caret-position="300">
+              <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -501,12 +493,12 @@
       <workItem from="1510256392871" duration="43078000" />
       <workItem from="1510434366613" duration="9981000" />
       <workItem from="1510445093542" duration="766000" />
-      <workItem from="1510445920241" duration="115000" />
+      <workItem from="1510445920241" duration="1906000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55242000" />
+    <option name="totallyTimeSpent" value="57033000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-1" width="1922" height="1055" extended-state="6" />
@@ -530,7 +522,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4113082" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4113082" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IntelliGuard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -941,8 +933,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/AePlayWave.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="71" column="16" lean-forward="false" selection-start-line="50" selection-start-column="4" selection-end-line="71" selection-end-column="16" />
+        <state relative-caret-position="300">
+          <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -951,8 +943,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="352" column="52" lean-forward="false" selection-start-line="352" selection-start-column="52" selection-end-line="352" selection-end-column="52" />
+        <state relative-caret-position="234">
+          <caret line="166" column="35" lean-forward="true" selection-start-line="164" selection-start-column="9" selection-end-line="166" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
