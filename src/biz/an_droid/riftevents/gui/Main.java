@@ -310,10 +310,6 @@ public class Main extends Application {
         colDuration.setCellValueFactory(new PropertyValueFactory<TableElement,Integer>("duration"));
         table.setColumnResizePolicy(param -> true); //automatic resize
 
-        colServer.setSortType(TableColumn.SortType.ASCENDING);
-        colDuration.setSortType(TableColumn.SortType.DESCENDING);
-        table.getSortOrder().clear();
-        table.getSortOrder().addAll(colDuration, colServer);
 
         final TrayNotification tray = new TrayNotification();
         tray.setTitle("New RIFT Event(s)");
@@ -333,8 +329,8 @@ public class Main extends Application {
                 {
                     for (ServerEvent e : events.get(server))
                     {
-                        int seconds = (int)e.getElapsedSeconds(RequestEvents.isEuServer(server))/60;
-                        data.add(new TableElement(server, seconds));
+                        int seconds = (int)e.getElapsedSeconds(RequestEvents.isEuServer(server));
+                        data.add(new TableElement(server, seconds / 60));
                         if (seconds <= period)
                             toSay.add(server);
                     }
@@ -343,7 +339,11 @@ public class Main extends Application {
 
             Platform.runLater(()->{
                 table.setItems(data);
-
+                colServer.setSortType(TableColumn.SortType.ASCENDING);
+                colDuration.setSortType(TableColumn.SortType.DESCENDING);
+                table.getSortOrder().clear();
+                table.getSortOrder().addAll(colDuration, colServer);
+                
                 if (new_events && cp.isSelected())
                 {
                     tray.setMessage("Double click icon to see events table.");
