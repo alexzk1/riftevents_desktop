@@ -10,8 +10,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java" afterPath="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tray/animations/FadeAnimation.java" afterPath="$PROJECT_DIR$/src/tray/animations/FadeAnimation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tray/notification/TrayNotification.java" afterPath="$PROJECT_DIR$/src/tray/notification/TrayNotification.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,27 +72,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ImageLoader.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ImageLoader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-750">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="-726">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding>
-                <element signature="e#937#938#0" expanded="true" />
-                <element signature="e#993#994#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#930#931#0" expanded="true" />
+                <element signature="e#986#987#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="102" column="101" lean-forward="false" selection-start-line="102" selection-start-column="101" selection-end-line="102" selection-end-column="101" />
+            <state relative-caret-position="-41">
+              <caret line="79" column="12" lean-forward="false" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8415#8424#0" expanded="true" />
+                <element signature="e#8482#8491#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -158,8 +157,8 @@
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/AePlayWave.java" />
         <option value="$PROJECT_DIR$/src/tray/notification/TrayNotification.java" />
         <option value="$PROJECT_DIR$/src/tray/animations/FadeAnimation.java" />
-        <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java" />
         <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java" />
+        <option value="$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java" />
       </list>
     </option>
   </component>
@@ -470,12 +469,12 @@
       <workItem from="1510445093542" duration="766000" />
       <workItem from="1510445920241" duration="1934000" />
       <workItem from="1510448048336" duration="128000" />
-      <workItem from="1510527657043" duration="2114000" />
+      <workItem from="1510527657043" duration="4798000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59303000" />
+    <option name="totallyTimeSpent" value="61987000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-1" width="1922" height="1055" extended-state="6" />
@@ -910,24 +909,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="102" column="101" lean-forward="false" selection-start-line="102" selection-start-column="101" selection-end-line="102" selection-end-column="101" />
+        <state relative-caret-position="-726">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8415#8424#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/ImageLoader.java">
+    <entry file="file://$PROJECT_DIR$/src/biz/an_droid/riftevents/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-750">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="-41">
+          <caret line="79" column="12" lean-forward="false" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
           <folding>
-            <element signature="e#937#938#0" expanded="true" />
-            <element signature="e#993#994#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#8482#8491#0" expanded="true" />
           </folding>
         </state>
       </provider>

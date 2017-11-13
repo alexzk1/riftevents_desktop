@@ -77,8 +77,8 @@ public class Main extends Application {
         Platform.runLater(()->
         {
             //ok, on my lxqt icon is broken
-            //if (!PlatformUtil.isLinux() && addAppToTray())
-            if (addAppToTray())
+            if (!PlatformUtil.isLinux() && addAppToTray())
+           // if (addAppToTray())
                 Platform.setImplicitExit(false);
             else
                 showStage();
@@ -100,7 +100,8 @@ public class Main extends Application {
             {
                 // set up a system tray icon.
                 java.awt.SystemTray tray = java.awt.SystemTray.getSystemTray();
-                trayIcon = new java.awt.TrayIcon(ImageLoader.loadICOFromUrlForTray(iconImageLoc, true));
+                trayIcon = new java.awt.TrayIcon(ImageLoader.loadICOFromUrlForTray(iconImageLoc, PlatformUtil.isLinux()));
+                trayIcon.setImageAutoSize(true);
                 trayIcon.setToolTip("RIFT desktop event tracker.");
 
                 // if the user selects the default menu item (which includes the app name),

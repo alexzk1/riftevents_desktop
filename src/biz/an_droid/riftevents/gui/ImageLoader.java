@@ -1,10 +1,7 @@
 package biz.an_droid.riftevents.gui;
 
-
 import biz.an_droid.riftevents.ResourceLoader;
 import net.sf.image4j.codec.ico.ICODecoder;
-
-
 import javax.imageio.ImageIO;
 import java.io.InputStream;
 import java.net.URL;
@@ -15,9 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-;
-
 
 /**
  * Created by alex (alexzkhr@gmail.com) on 11/9/17.
