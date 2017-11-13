@@ -9,6 +9,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
@@ -162,9 +164,6 @@ public class Main extends Application {
 
     public static void main(String[] args) throws Exception
     {
-//        Set<String> t = new HashSet<>();
-//        t.add("Zaviel");
-//        AePlayWave.playList(t);
         launch(args);
         reader.close();
 
@@ -297,6 +296,15 @@ public class Main extends Application {
 
         vcpf.setSelected(prefs.getBoolean(say_key, true));
         vcpf.selectedProperty().addListener((observable, oldValue, newValue) -> prefs.putBoolean(say_key, newValue));
+
+
+//        final Button testSound = new Button("SoundTest");
+//        testSound.onActionProperty().setValue(event -> {
+//            Set<String> t = new HashSet<>();
+//            t.add("Zaviel");
+//            AePlayWave.playList(t);
+//        });grid.add(testSound, 0, row++,2,1);
+
 
         final TableView table = new TableView();
         grid.add(table, 0, row, 2, 10);

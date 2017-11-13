@@ -1,40 +1,25 @@
 package biz.an_droid.riftevents.gui;
 
 import biz.an_droid.riftevents.ResourceLoader;
+import com.sun.javafx.PlatformUtil;
 
 import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Set;
 
 public class AePlayWave extends Thread
 {
-
     private String filename;
-
-    private Position curPosition;
-
-    private final int EXTERNAL_BUFFER_SIZE = 524288; // 128Kb
-
-    enum Position
-    {
-        LEFT, RIGHT, NORMAL
-    }
-
-    ;
+    private static final int EXTERNAL_BUFFER_SIZE = 524288; // 128Kb
 
     public AePlayWave(String wavfile)
     {
         filename = wavfile;
-        curPosition = Position.NORMAL;
-    }
 
-    public AePlayWave(String wavfile, Position p)
-    {
-        filename = wavfile;
-        curPosition = p;
     }
-
+    
     public void playLocked()
     {
         System.out.println("Playing...");
@@ -49,79 +34,87 @@ public class AePlayWave extends Thread
     }
 
     private static Thread player = null;
+
     public static void playList(final Set<String> list)
     {
-         if (player != null)
-         {
-             player.interrupt();
-             try
-             {
-                 player.join();
-             } catch (InterruptedException e)
-             {
-             }
-         }
-         if (list != null)
-         {
-             player = new Thread(() ->
-             {
-                 for (String s : list)
-                 {
-                     if (Thread.currentThread().isInterrupted())
-                         break;
-                     new AePlayWave(s).playLocked();
-                 }
-             });
-             player.start();
-         }
+        if (player != null)
+        {
+            player.interrupt();
+            try
+            {
+                player.join();
+            } catch (InterruptedException e)
+            {
+            }
+        }
+        if (list != null)
+        {
+            player = new Thread(() ->
+            {
+                for (String s : list)
+                {
+                    if (Thread.currentThread().isInterrupted())
+                        break;
+                    new AePlayWave(s).playLocked();
+                }
+            });
+            player.start();
+        }
     }
 
     public void run()
     {
+        boolean has_default = false;
 
+        if (PlatformUtil.isLinux())
+        {
+            Mixer.Info[] inf = AudioSystem.getMixerInfo();
+            for (Mixer.Info i : inf)
+            {
+                if (i.getName().contains("[default]"))
+                {
+                    has_default = true;
+                    break;
+                }
+            }
+        }
 
-        AudioInputStream audioInputStream = null;
+        AudioInputStream audioInputStream;
+        BufferedInputStream sound;
         try
         {
-            audioInputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(ResourceLoader.getResourceAsStream(filename + ".mp3.wav")));
-        } catch (UnsupportedAudioFileException e1)
-        {
-            e1.printStackTrace();
-            return;
-        } catch (IOException e1)
+            sound =  new BufferedInputStream(ResourceLoader.getResourceAsStream(filename + ".mp3.wav"));
+
+            if (!has_default && PlatformUtil.isLinux())
+            {
+                linuxPlayExtern(sound);
+                return;
+            }
+            audioInputStream = AudioSystem.getAudioInputStream(sound);
+        } catch (InterruptedException | UnsupportedAudioFileException | IOException e1)
         {
             e1.printStackTrace();
             return;
         }
-
-        AudioFormat format = audioInputStream.getFormat();
+        
         SourceDataLine auline = null;
-        DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
-
         try
         {
+
+
+            AudioFormat format = audioInputStream.getFormat();
+            DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
             auline = (SourceDataLine) AudioSystem.getLine(info);
+            if (auline == null)
+                return;
+
             auline.open(format);
-        } catch (LineUnavailableException e)
-        {
-            e.printStackTrace();
-            return;
         } catch (Exception e)
         {
             e.printStackTrace();
             return;
         }
-
-        if (auline.isControlSupported(FloatControl.Type.PAN))
-        {
-            FloatControl pan = (FloatControl) auline
-                    .getControl(FloatControl.Type.PAN);
-            if (curPosition == Position.RIGHT)
-                pan.setValue(1.0f);
-            else if (curPosition == Position.LEFT)
-                pan.setValue(-1.0f);
-        }
-
+        
         auline.start();
         int nBytesRead = 0;
         byte[] abData = new byte[EXTERNAL_BUFFER_SIZE];
@@ -134,15 +127,43 @@ public class AePlayWave extends Thread
                 if (nBytesRead >= 0)
                     auline.write(abData, 0, nBytesRead);
             }
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             e.printStackTrace();
-            return;
-        } finally
+        }
+        finally
         {
             auline.drain();
             auline.close();
         }
 
+    }
+
+    private static void linuxPlayExtern(BufferedInputStream is) throws IOException, InterruptedException
+    {
+        System.out.println("Using aplay");
+        ProcessBuilder pb = new ProcessBuilder();
+        pb.command("aplay", "-D", "pulse");
+        pb.redirectError(ProcessBuilder.Redirect.INHERIT);
+        pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
+
+        Process p = pb.start();
+        int nBytesRead = 0;
+        byte[] abData = new byte[EXTERNAL_BUFFER_SIZE];
+
+        try
+        {
+            while (nBytesRead != -1)
+            {
+                nBytesRead = is.read(abData, 0, abData.length);
+                if (nBytesRead >= 0)
+                    p.getOutputStream().write(abData, 0, nBytesRead);
+            }
+        }
+        finally
+        {
+            p.waitFor();
+        }                 
     }
 } 
