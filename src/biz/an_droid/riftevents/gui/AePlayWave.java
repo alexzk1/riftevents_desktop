@@ -7,6 +7,7 @@ import javax.sound.sampled.*;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Set;
 
 public class AePlayWave extends Thread
@@ -19,7 +20,7 @@ public class AePlayWave extends Thread
         filename = wavfile;
 
     }
-    
+
     public void playLocked()
     {
         System.out.println("Playing...");
@@ -96,7 +97,7 @@ public class AePlayWave extends Thread
             e1.printStackTrace();
             return;
         }
-        
+
         SourceDataLine auline = null;
         try
         {
@@ -114,19 +115,10 @@ public class AePlayWave extends Thread
             e.printStackTrace();
             return;
         }
-        
         auline.start();
-        int nBytesRead = 0;
-        byte[] abData = new byte[EXTERNAL_BUFFER_SIZE];
-
         try
         {
-            while (nBytesRead != -1)
-            {
-                nBytesRead = audioInputStream.read(abData, 0, abData.length);
-                if (nBytesRead >= 0)
-                    auline.write(abData, 0, nBytesRead);
-            }
+            pipeStream(audioInputStream, auline);
         }
         catch (IOException e)
         {
@@ -140,6 +132,25 @@ public class AePlayWave extends Thread
 
     }
 
+    private final static byte[] abData = new byte[EXTERNAL_BUFFER_SIZE];
+    private static <T> void pipeStream(InputStream is, T os) throws IOException
+    {
+        int nBytesRead = 0;
+        while (nBytesRead != -1)
+        {
+            nBytesRead = is.read(abData, 0, abData.length);
+            if (nBytesRead >= 0)
+            {
+                //oh this dumb java .. C++ is much better >:
+                if (os instanceof OutputStream)
+                    ((OutputStream)os).write(abData, 0, nBytesRead);
+
+                if (os instanceof SourceDataLine)
+                    ((SourceDataLine)os).write(abData, 0, nBytesRead);
+            }
+        }
+    }
+
     private static void linuxPlayExtern(BufferedInputStream is) throws IOException, InterruptedException
     {
         System.out.println("Using aplay");
@@ -147,23 +158,14 @@ public class AePlayWave extends Thread
         pb.command("aplay", "-D", "pulse");
         pb.redirectError(ProcessBuilder.Redirect.INHERIT);
         pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
-
         Process p = pb.start();
-        int nBytesRead = 0;
-        byte[] abData = new byte[EXTERNAL_BUFFER_SIZE];
-
         try
         {
-            while (nBytesRead != -1)
-            {
-                nBytesRead = is.read(abData, 0, abData.length);
-                if (nBytesRead >= 0)
-                    p.getOutputStream().write(abData, 0, nBytesRead);
-            }
+            pipeStream(is, p.getOutputStream());
         }
         finally
         {
             p.waitFor();
-        }                 
+        }
     }
 } 
