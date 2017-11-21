@@ -57,7 +57,7 @@ public class Main extends Application {
     {
         // stores a reference to the stage.
         this.stage = stage;
-        stage.setTitle("RIFT Events Tracker");
+        updateTitle(0);
         stage.resizableProperty().setValue(Boolean.FALSE);
 
         stage.getIcons().add(SwingFXUtils.toFXImage(ImageLoader.loadICOFromUrlForTray(iconImageLoc), null));
@@ -87,6 +87,14 @@ public class Main extends Application {
         });
     }
 
+    private final static String titleString = "RIFT Events Tracker";
+    private void updateTitle(int events_count)
+    {
+         if (events_count < 1)
+             stage.setTitle("RIFT Events Tracker");
+         else
+             stage.setTitle(String.format("(%d) RIFT Events Tracker", events_count));
+    }
 
     /**
      * Sets up a system tray icon for the application.
@@ -347,6 +355,7 @@ public class Main extends Application {
 
             Platform.runLater(()->{
                 table.setItems(data);
+                updateTitle(data.size());
                 colServer.setSortType(TableColumn.SortType.ASCENDING);
                 colDuration.setSortType(TableColumn.SortType.DESCENDING);
                 table.getSortOrder().clear();

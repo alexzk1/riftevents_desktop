@@ -101,8 +101,6 @@ public class AePlayWave extends Thread
         SourceDataLine auline = null;
         try
         {
-
-
             AudioFormat format = audioInputStream.getFormat();
             DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
             auline = (SourceDataLine) AudioSystem.getLine(info);
