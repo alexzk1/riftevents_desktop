@@ -65,20 +65,21 @@ public class AePlayWave extends Thread
 
     public void run()
     {
-        boolean has_default = false;
-
-        if (PlatformUtil.isLinux())
-        {
-            Mixer.Info[] inf = AudioSystem.getMixerInfo();
-            for (Mixer.Info i : inf)
-            {
-                if (i.getName().contains("[default]"))
-                {
-                    has_default = true;
-                    break;
-                }
-            }
-        }
+//        boolean has_default = false;
+//
+//        if (PlatformUtil.isLinux())
+//        {
+//            Mixer.Info[] inf = AudioSystem.getMixerInfo();
+//            for (Mixer.Info i : inf)
+//            {
+//               // System.out.println(i.getName());
+//                if (i.getName().contains("[default]"))
+//                {
+//                    has_default = true;
+//                    break;
+//                }
+//            }
+//        }
 
         AudioInputStream audioInputStream;
         BufferedInputStream sound;
@@ -86,7 +87,8 @@ public class AePlayWave extends Thread
         {
             sound =  new BufferedInputStream(ResourceLoader.getResourceAsStream(filename + ".mp3.wav"));
 
-            if (!has_default && PlatformUtil.isLinux())
+            //if (PlatformUtil.isLinux() && !has_default)
+            if (PlatformUtil.isLinux())
             {
                 linuxPlayExtern(sound);
                 return;
@@ -147,19 +149,22 @@ public class AePlayWave extends Thread
                     ((SourceDataLine)os).write(abData, 0, nBytesRead);
             }
         }
+        System.out.println("Pipe ended");
     }
 
     private static void linuxPlayExtern(BufferedInputStream is) throws IOException, InterruptedException
     {
         System.out.println("Using aplay");
         ProcessBuilder pb = new ProcessBuilder();
-        pb.command("aplay", "-D", "pulse");
+        pb.command("aplay", "-f", "cd", "-D", "pulse");
         pb.redirectError(ProcessBuilder.Redirect.INHERIT);
         pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
         Process p = pb.start();
         try
         {
             pipeStream(is, p.getOutputStream());
+            Thread.sleep(500);
+            p.destroy();
         }
         finally
         {

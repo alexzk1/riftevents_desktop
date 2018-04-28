@@ -306,12 +306,12 @@ public class Main extends Application {
         vcpf.selectedProperty().addListener((observable, oldValue, newValue) -> prefs.putBoolean(say_key, newValue));
 
 
-//        final Button testSound = new Button("SoundTest");
-//        testSound.onActionProperty().setValue(event -> {
-//            Set<String> t = new HashSet<>();
-//            t.add("Zaviel");
-//            AePlayWave.playList(t);
-//        });grid.add(testSound, 0, row++,2,1);
+        final Button testSound = new Button("SoundTest");
+        testSound.onActionProperty().setValue(event -> {
+            Set<String> t = new HashSet<>();
+            t.add("Zaviel");
+            AePlayWave.playList(t);
+        });grid.add(testSound, 0, row++,2,1);
 
 
         final TableView table = new TableView();
