@@ -6,6 +6,8 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -334,7 +336,7 @@ public class Main extends Application
         });grid.add(testSound, 0, row++,2,1);
 
 
-        final TableView table = new TableView();
+        final TableView<TableElement> table = new TableView<>();
         grid.add(table, 0, row, 2, 10);
         row += 10;
 
@@ -355,12 +357,18 @@ public class Main extends Application
         tray.setMessage("Double click icon to see events table.");
 
         tray.setAnimationType(AnimationType.FADE);
+
+        table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            table.setTooltip(new Tooltip(table.getSelectionModel().getSelectedItem().getName()));
+            //table.getTooltip().show();
+        });
+
         reader.addListener((events, new_events) -> {
             final ObservableList<TableElement> data = FXCollections.observableArrayList();
 
             final Set<String> toSay = new HashSet<>(10);
             final int period = reader.getPeriod();
-            
+
             if (events != null && !events.isEmpty())
             {
                 for (String server : events.keySet())
@@ -376,6 +384,7 @@ public class Main extends Application
             }
 
             Platform.runLater(()->{
+                table.setTooltip(null);
                 table.setItems(data);
                 updateTitle(data.size());
                 colServer.setSortType(TableColumn.SortType.ASCENDING);
