@@ -9,6 +9,6 @@ public class VostigarActivesFilter extends BaseSingleZoneFilter
     @Override
     long getFilterZoneId()
     {
-        return 511816852L;
+        return ZoneIDs.Vostigar;
     }
 }

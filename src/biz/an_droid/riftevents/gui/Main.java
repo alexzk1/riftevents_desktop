@@ -1,35 +1,30 @@
 package biz.an_droid.riftevents.gui;
 
-import biz.an_droid.riftevents.ResourceLoader;
 import biz.an_droid.riftevents.api.*;
 import com.sun.javafx.PlatformUtil;
-import javafx.application.*;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.stage.*;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import tray.animations.AnimationType;
 import tray.notification.TrayNotification;
 
-import javax.sound.sampled.*;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,7 +32,8 @@ import java.util.prefs.Preferences;
 
 
 // Java 8 code
-public class Main extends Application {
+public class Main extends Application
+{
 
     private static final Preferences prefs = Preferences.userNodeForPackage(Main.class);
     // one icon location is shared between the application tray icon and task bar icon.
@@ -47,7 +43,11 @@ public class Main extends Application {
     // application stage is stored so that it can be shown and hidden based on system tray icon operations.
     private Stage stage;
 
-    public final static EventsReaderThreaded reader = new EventsReaderThreaded(new VostigarActivesFilter(), false);
+    private final static IZoneFilter[] filters = {
+            new VostigarActivesFilter(), new CrackingSkullFilter(),
+    };
+
+    private final static EventsReaderThreaded reader = new EventsReaderThreaded(new AnyFilter(filters), false);
 
     // sets up the javafx application.
     // a tray icon is setup for the icon, but the main stage remains invisible until the user
@@ -259,8 +259,8 @@ public class Main extends Application {
         reader.setPeriodSeconds(spinner.getValue());
 
 
-        Text scenetitle = new Text("Vostigar Events Only");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        Text scenetitle = new Text("Vostigar Events & Cracking Skull");
+        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
         grid.add(scenetitle, 0, row++, 2, 1);
 
         grid.add(new Label("EU Servers"), 0, row);
