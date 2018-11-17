@@ -238,6 +238,21 @@ public class Main extends Application
         {
             duration.set(newValue);
         }
+
+        public String getName()
+        {
+            return name.get();
+        }
+
+        public SimpleStringProperty nameProperty()
+        {
+            return name;
+        }
+
+        public void setName(String name)
+        {
+            this.name.set(name);
+        }
     }
 
 
@@ -250,7 +265,7 @@ public class Main extends Application
         final ArrayList<String> selected = new ArrayList<>(20);
 
         int row = 0;
-        grid.setAlignment(Pos.TOP_CENTER);
+        grid.setAlignment(Pos.TOP_LEFT);
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
