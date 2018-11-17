@@ -206,11 +206,16 @@ public class Main extends Application
     public static class TableElement
     {
         private final SimpleStringProperty  server;
+        private final SimpleStringProperty name;
         private final SimpleIntegerProperty duration;
 
-        public TableElement(String server, int duration)
+        public TableElement(String server, String name, int duration)
         {
             this.server = new SimpleStringProperty(server);
+            if (name != null)
+                this.name = new SimpleStringProperty(name);
+            else
+                this.name= new SimpleStringProperty("-");
             this.duration = new SimpleIntegerProperty(duration);
         }
 
@@ -319,10 +324,12 @@ public class Main extends Application
         row += 10;
 
         final TableColumn colServer   = new TableColumn<>("Server");
+        final TableColumn colName  = new TableColumn<>("Name");
         final TableColumn colDuration = new TableColumn<>("Duration(min)");
-        table.getColumns().addAll(colServer, colDuration);
+        table.getColumns().addAll(colServer, colName, colDuration);
 
         colServer.setCellValueFactory(new PropertyValueFactory<TableElement,String>("server"));
+        colName.setCellValueFactory(new PropertyValueFactory<TableElement,String>("name"));
         colDuration.setCellValueFactory(new PropertyValueFactory<TableElement,Integer>("duration"));
         table.setColumnResizePolicy(param -> true); //automatic resize
 
@@ -346,7 +353,7 @@ public class Main extends Application
                     for (ServerEvent e : events.get(server))
                     {
                         int seconds = (int)e.getElapsedSeconds(RequestEvents.isEuServer(server));
-                        data.add(new TableElement(server, seconds / 60));
+                        data.add(new TableElement(server, e.getName(),seconds / 60));
                         if (seconds <= period)
                             toSay.add(server);
                     }
